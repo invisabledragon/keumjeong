@@ -7,14 +7,21 @@ pic = ['갑주어_고생대_.PNG', '공룡_중생대_.PNG', '매머드_신생대
        '삼엽충_고생대_.PNG', '스트로마톨라이트_선캄브리아_.PNG', '암모나이트_중생대_.PNG', 
        '디킨소니아_선캄브리아_.PNG', '필석_고생대_.PNG', '화폐석_신생대_.PNG']
 
+player = {}
+
+<두 프로그램으로 나눠서 진행>
+
 game = True
 
-nscore = 0
-score = 0
-
-#cho = input("이름 학습을 플레이하려면 1, 시대 학습을 플레이하려면 2를 입력해주세요.")
-
 while game == True :
+    
+    pep = input("player 닉네임을 입력해주세요.")
+    
+    if pep not in player :
+        player[pep] = 0
+    
+    score = 0
+    nscore = player[pep]
     
     cho = input("이름 학습을 플레이하려면 1, 시대 학습을 플레이하려면 2를 입력해주세요.")
     
@@ -31,6 +38,7 @@ while game == True :
 
             if name == "그만" :
                 print("학습을 중단하셨습니다. 현재까지 누적 점수는", nscore, "점 입니다.")
+                player[pep] = nscore
                 break
 
             elif cho == '1' :
@@ -56,12 +64,12 @@ while game == True :
                     pic.append(play)        
 
         print("학습 완료. 당신의 점수는", score, "점 입니다.(누적 점수 :", nscore, ")")
+        player[pep] = nscore
         
         new = input("새 게임을 시작하시겠습니까? 예 / 아니오")
         
         if new == '예' :
             game = True
-            score = 0
             pic = ['갑주어_고생대_.PNG', '공룡_중생대_.PNG', '매머드_신생대_.PNG', '방추충_고생대_.PNG',
            '삼엽충_고생대_.PNG', '스트로마톨라이트_선캄브리아_.PNG', '암모나이트_중생대_.PNG', 
            '디킨소니아_선캄브리아_.PNG', '필석_고생대_.PNG', '화폐석_신생대_.PNG']
@@ -74,4 +82,3 @@ while game == True :
         print("입력이 잘못되었습니다.")
         
 print("학습이 종료됩니다.")
-
